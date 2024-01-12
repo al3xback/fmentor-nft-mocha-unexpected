@@ -23,58 +23,55 @@ describe('DOM', () => {
 			const document = await getData();
 			global.document = document;
 
-			const isElementContainText = (elName, text) => {
+			const isElContainText = (elName, text) => {
 				if (!elName || !text) {
 					return;
 				}
 
-				const element = document.querySelector(`.${elName}`);
-				const elementContent = element.textContent.replace(
-					/\n|\t/g,
-					''
-				);
-				return elementContent.indexOf(text) !== -1;
+				const el = document.querySelector(`.${elName}`);
+				const elContent = el.textContent.replace(/\n|\t/g, '');
+				return elContent.indexOf(text) !== -1;
 			};
-			global.isElementContainText = isElementContainText;
+			global.isElContainText = isElContainText;
 		} catch (err) {
 			console.log(err);
 		}
 	});
 
 	it("should return undefined if there's no argument inside 'isElementContainText' function", () => {
-		const result = isElementContainText();
+		const result = isElContainText();
 		expect(result, 'to be', undefined);
 	});
 
 	it("should have 'Equilibrium' text in the 'card__title' class element", () => {
-		const isContainText = isElementContainText(
+		const isElementContainText = isElContainText(
 			'card__title',
 			'Equilibrium'
 		);
-		expect(isContainText, 'to be', true);
+		expect(isElementContainText, 'to be', true);
 	});
 
 	it("should have 'Equilibrium collection' text in the 'card__desc' class element", () => {
-		const isContainText = isElementContainText(
+		const isElementContainText = isElContainText(
 			'card__desc',
 			'Equilibrium collection'
 		);
-		expect(isContainText, 'to be', true);
+		expect(isElementContainText, 'to be', true);
 	});
 
 	it("should have 'ETH' text in the 'card__stats-list-item' class element", () => {
-		const isContainText = isElementContainText(
+		const isElementContainText = isElContainText(
 			'card__stats-list-item',
 			'ETH'
 		);
-		expect(isContainText, 'to be', true);
+		expect(isElementContainText, 'to be', true);
 	});
 
 	it("should have 'Jules Wyvern' text in the 'card__author' class element", () => {
-		const isContainText = isElementContainText(
+		const isElementContainText = isElContainText(
 			'card__author',
 			'Jules Wyvern'
 		);
-		expect(isContainText, 'to be', true);
+		expect(isElementContainText, 'to be', true);
 	});
 });
